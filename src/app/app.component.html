@@ -1,3 +1,90 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-header>
+    <ion-toolbar>
+      <ion-searchbar placeholder="Filter Pizza" (ionChange)="onSearchChange($event)"></ion-searchbar>
+      <ion-title>badget</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-badge color="primary" mode="ios">42</ion-badge>
+    <ion-badge color="medium" mode="md">42</ion-badge>
+    <ion-button color="primary" size="default" fill="clear">default/clear</ion-button>
+    <ion-button color="warning" size="small" fill="outline" expand="block">small/outline/expand="block"</ion-button>
+    <ion-button color="danger" size="large" fill="solid" expand="full">large/solid/expand="full"</ion-button>
+    <!-- icon -->
+    <ion-icon name="fish-outline" style="font-size:40px" color="tertiary"></ion-icon>
+    <ion-input type="text" placeholder="Awesome Input"></ion-input>
+    <ion-input type="password" placeholder="mot de pass"></ion-input>
+    <ion-item>
+      <ion-label>Awesome Label</ion-label>
+    </ion-item>
+<!-- ion-item:slot -->
+    <ion-item>
+      <ion-icon name="logo-apple" slot="start"></ion-icon>
+      <ion-icon name="logo-octocat" slot="end"></ion-icon>
+      <ion-label>Apple</ion-label>
+    </ion-item>
+    <!-- ion-item:button/detail(>) -->
+    <ion-item button detail>
+      <ion-label>click</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>username:</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+<!-- ion-item:avatar -->
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="https://img.freepik.com/vecteurs-libre/portrait-chat-cravate-lunettes-hipster-regard-isole-illustration-vectorielle_1284-1931.jpg?w=740&t=st=1673537071~exp=1673537671~hmac=7630c75122e5630fc1ab9b0c6d9089c9ce42366121fd2e18f777888a5f4715c0" />
+      </ion-avatar>
+      <ion-label>
+        <h2>Item Avatar</h2>
+        <p>kiki</p>
+      </ion-label>
+      <ion-badge color="danger" mode="ios" slot="end">99+</ion-badge>
+    </ion-item>
+
+<!-- ion-item-divider -->
+<ion-item-divider>
+  <ion-label>A</ion-label>
+</ion-item-divider>
+<ion-item>
+  <ion-label>Cat</ion-label>
+</ion-item><ion-item>
+  <ion-label>Dog</ion-label>
+</ion-item>
+
+<ion-item-divider>
+  <ion-label>B</ion-label>
+</ion-item-divider>
+<ion-item>
+  <ion-label>Cat</ion-label>
+</ion-item><ion-item>
+  <ion-label>Dog</ion-label>
+</ion-item>
+
+
+<!-- ion-card -->
+<ion-card>
+  <img src="https://img.freepik.com/photos-gratuite/chat-gris-mur-monochrome-derriere-elle_23-2148955126.jpg?w=1380&t=st=1673537642~exp=1673538242~hmac=aa26332ef215f2a84832400d3d9a2930c0d959807f6537311808ba4db10107da" alt="">
+  <ion-card-header>
+    <ion-card-subtitle>Lorem ipsum dolor sit amet consectetur adipisicing elit!</ion-card-subtitle>
+    <ion-card-title>Cat</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti adipisci amet nam aut, velit dignissimos et consectetur animi in sit repellat quibusdam nesciunt illo beatae consequatur ipsam repudiandae. Maxime cum aliquam debitis qui nobis rem id laboriosam ut.
+  </ion-card-content>
+</ion-card>
+
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar color="danger">
+      <ion-title>Footer</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+  <!-- <ion-router-outlet></ion-router-outlet> -->
 </ion-app>
