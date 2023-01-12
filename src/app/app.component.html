@@ -6,7 +6,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
+  <ion-content *ngIf="res">
     <ion-badge color="primary" mode="ios">42</ion-badge>
     <ion-badge color="medium" mode="md">42</ion-badge>
     <ion-button color="primary" size="default" fill="clear">default/clear</ion-button>
@@ -68,6 +68,7 @@
 
 
 <!-- ion-card -->
+
 <ion-card>
   <img src="https://img.freepik.com/photos-gratuite/chat-gris-mur-monochrome-derriere-elle_23-2148955126.jpg?w=1380&t=st=1673537642~exp=1673538242~hmac=aa26332ef215f2a84832400d3d9a2930c0d959807f6537311808ba4db10107da" alt="">
   <ion-card-header>
@@ -79,7 +80,67 @@
   </ion-card-content>
 </ion-card>
 
+
+
+<!-- ion-slide -->
+<!-- 用户手动操作后是否要停止滚动 -->
+<!-- loop:循环滚动 -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>滚动组件</ion-title>
+    <ion-button (click)="showAlert()"  slot="end" fill="clear">
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-slides pager [options]="{autoplay: {
+  disableOnInteraction:false,
+  delay:3000
+     },
+     loop:true
+}">
+  <ion-slide *ngFor="let item of res">
+    <!-- pager:页数指示器 -->
+    <!-- petit bug 默认：自动滚动时，如果手动操作，则取消自动滚动 donc:         [options]="{autoplay: {
+        disableOnInteraction:false
+          }
+      }" -->
+    <ion-card>
+      <img src="{{item.imageUrl}}" alt="">
+      <ion-card-header>
+        <ion-card-subtitle>{{item.realisateur}}}</ion-card-subtitle>
+        <ion-card-title>{{item.titre}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{item.description}}}
+      </ion-card-content>
+    </ion-card>
+  </ion-slide>
+   
+</ion-slides>
   </ion-content>
+
+
+  <!--下拉刷新和加载更多  -->
+
+<ion-content *ngIf="res">
+  <ion-card *ngFor="let item of res">
+    <ion-card-header>
+      <ion-card-title>{{item.titre}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+<!-- 底部，加载更多 -->
+<!-- 当触底时，会触发loadData() -->
+  <ion-infinite-scroll 
+      threshold="25%" 
+      position="bottom" 
+      (ionInfinite)="loadData($event)">
+
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
 
   <ion-footer>
     <ion-toolbar color="danger">
