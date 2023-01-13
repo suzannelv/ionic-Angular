@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +15,7 @@ export class AppComponent implements OnInit{
   }
   res:any;
   ngOnInit(): void {
-  let url = 'https://sangria-walkingstick-kit.cyclic.app/api/movies'
-    this.http.get(url).subscribe((res)=>{
+    this.http.get(environment.baseApiUrl).subscribe((res)=>{
       console.log(res);
       this.res=res;
     })
@@ -52,9 +50,22 @@ export class AppComponent implements OnInit{
   // present():弹出  res是创建出来的对话框，  对话框.弹出()
   }
 
-  loadData(e) {
-   console.log("bas")
-  //  加载更多
+  // loadData(e) {
+  //  console.log("bas")
+  // //  加载更多
+  // }
+
+  doRefresh(event:any){
+    setTimeout(()=>{
+      event.target.complete();
+    },2000)
+
+  }
+
+  loadData1(e:any){
+    setTimeout(() => {
+      e.target.complete()
+    }, 2000);
   }
 }
 

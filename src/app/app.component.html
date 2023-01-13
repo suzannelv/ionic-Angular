@@ -121,9 +121,13 @@
   </ion-content>
 
 
-  <!--下拉刷新和加载更多  -->
+  <!--下拉刷新和加载更多 (ionRefresh)="doRefresh($event)" -->
 
 <ion-content *ngIf="res">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-card *ngFor="let item of res">
     <ion-card-header>
       <ion-card-title>{{item.titre}}</ion-card-title>
@@ -131,16 +135,49 @@
   </ion-card>
 
 <!-- 底部，加载更多 -->
-<!-- 当触底时，会触发loadData() -->
-  <ion-infinite-scroll 
-      threshold="25%" 
-      position="bottom" 
-      (ionInfinite)="loadData($event)">
-
+<!-- 当触底时，会触发loadData():  (ionInfinite)="loadData($event)" -->
+  <ion-infinite-scroll threshold="25%" position="bottom">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
+
+
+<!-- ion-grid -->
+
+<ion-content *ngIf="res">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6" style="background-color: rgb(158, 227, 158)">1</ion-col>
+      <ion-col size="6" style="background-color: rgb(110, 118, 235)">2</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="background-color: rgb(50, 212, 155)">1</ion-col>
+      <ion-col style="background-color: rgb(15, 30, 244)">2</ion-col>
+      <ion-col  style="background-color: rgb(182, 106, 43)">3</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of res">
+        <ion-card class="myFilm">
+          <img src={{item.imageUrl}} alt="">
+          <ion-card-header>
+            <ion-label>{{item.titre}}</ion-label>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll threshold="25%" [disabled]="false" position="bottom" (ionInfinite)="loadData1($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more movies...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-button disabled expand="full">
+   no more film...
+  </ion-button>
+</ion-content>
+
 
   <ion-footer>
     <ion-toolbar color="danger">
@@ -149,3 +186,7 @@
   </ion-footer>
   <!-- <ion-router-outlet></ion-router-outlet> -->
 </ion-app>
+
+
+
+
